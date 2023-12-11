@@ -4,15 +4,27 @@ import (
 	"log"
 	"net/http"
 
-	"tracy_hub/app"
+	"github.com/alta3/sales_hub/app"
+	"github.com/gorilla/mux"
 )
 
-func main() {
-	http.HandleFunc("/", app.HomeHandler)
-	http.HandleFunc("/courses", app.CoursesHandler)
-	http.HandleFunc("/sales-enablement", app.SalesEnablementHandler)
-	http.HandleFunc("/proposal-templates", app.ProposalTemplatesHandler)
-	http.HandleFunc("/pricing", app.PricingHandler)
+func RegisterRoutes(router *mux.Router) {
+	router.HandleFunc("/", app.HomeHandler).Methods("GET")
+	router.HandleFunc("/courses", app.CoursesHandler).Methods("GET")
+	router.HandleFunc("/sales-enablement", app.SalesEnablementHandler).Methods("GET")
+	router.HandleFunc("/proposal-templates", app.ProposalTemplatesHandler).Methods("GET")
+	router.HandleFunc("/pricing", app.PricingHandler).Methods("GET")
+}
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+func main() {
+	port := "8080" // Change this to your desired port
+
+	r := mux.NewRouter()
+	RegisterRoutes(r)
+
+	log.Println("Server is starting on port", port+"...")
+	err := http.ListenAndServe(":"+port, r)
+	if err != nil {
+		log.Fatalf("Failed to start server: %v", err)
+	}
 }

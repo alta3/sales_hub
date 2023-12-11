@@ -83,14 +83,14 @@
     
     <nav>
         <ul>
-            <li><a href="/Courses">Courses</a></li>
-            <li><a href="/SalesEnablement">Sales Enablement</a></li>
-            <li><a href="/ProposalTemplates">Proposal Templates</a></li>
-            <li><a href="/Pricing">Pricing</a></li>
+            <li><a href="/courses">Courses</a></li>
+            <li><a href="/sales-enablement">Sales Enablement</a></li>
+            <li><a href="/proposal-templates">Proposal Templates</a></li>
+            <li><a href="/pricing">Pricing</a></li>
         </ul>
     </nav>
 
-    {{if eq .Section "Courses"}}
+    {{if eq .SectionTitle "Courses Table"}}
         <!-- Course Cards -->
         <div id="tableBox">
             <table id="myTable" class="display cell-border">
@@ -127,7 +127,7 @@
             });
         </script>
     {{else}}
-        <h3>The Future Home of {{.Section}} Information</h3>
+        <h2>The Future Home of {{.SectionTitle}} Information</h2>
     {{end}}
 
 </body>

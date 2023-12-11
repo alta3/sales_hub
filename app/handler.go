@@ -49,7 +49,7 @@ func PricingHandler(w http.ResponseWriter, r *http.Request) {
 
 func getLiveCourses() []CourseData {
 	// Define the directory path
-	coursesDir := "courses"
+	coursesDir := "../labs/courses"
 
 	// List all directories within "courses"
 	courseDirs, err := os.ReadDir(coursesDir)
