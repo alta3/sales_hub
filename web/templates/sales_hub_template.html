@@ -26,6 +26,11 @@
             color: #4CAF50;
         }
 
+        h2 { 
+            text-align: center;
+            font-size: 2em;
+        }
+
         h3 {
             color: #112;
             text-align: center;
@@ -74,6 +79,61 @@
             height: auto;
             border-radius: 50%;
         }
+        .navigation {
+            background-color: #2a612c;
+            padding: 10px;
+            text-align: center;
+            width: auto;
+        }
+    
+        .nav-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .nav-item {
+            display: inline;
+            margin-right: 20px;
+            position: relative;
+        }
+    
+        .nav-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -12px;
+            width: 1px;
+            height: 250%;
+            background-color: #112;
+            transform: translateY(-50%);
+        }
+    
+        .nav-link {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    
+        .nav-link:hover {
+            color: #112;
+        }
+
+        .links_list {
+            text-align: center;
+        }
+        .links_list a {
+            color: #448aff;
+        }
+
+        .links_list li {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+        li {
+            list-style-type: none;
+        }
     </style>
 </head>
 <body>
@@ -81,17 +141,18 @@
     <h1>Alta3 (Tracy's) Sales Hub</h1>
     <h3>The Future Home of Tracy's Sales Intranet For Cool Shit</h3>
     
-    <nav>
-        <ul>
-            <li><a href="/courses">Courses</a></li>
-            <li><a href="/sales-enablement">Sales Enablement</a></li>
-            <li><a href="/proposal-templates">Proposal Templates</a></li>
-            <li><a href="/pricing">Pricing</a></li>
+    <nav class="navigation">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="/courses" class="nav-link">Courses</a></li>
+            <li class="nav-item"><a href="/sales-enablement" class="nav-link">Sales Enablement</a></li>
+            <li class="nav-item"><a href="/proposal-templates" class="nav-link">Proposal Templates</a></li>
+            <li class="nav-item"><a href="/pricing" class="nav-link">Pricing</a></li>
         </ul>
     </nav>
 
     {{if eq .SectionTitle "Courses Table"}}
         <!-- Course Cards -->
+        <h2>Live Courses</h2>
         <div id="tableBox">
             <table id="myTable" class="display cell-border">
                 <thead>
@@ -126,6 +187,24 @@
                 $('#myTable').DataTable();
             });
         </script>
+    {{else if eq .SectionTitle "Pricing"}}
+        <!-- Render Pricing Section -->
+        <section id="pricing">
+            <h2>Pricing</h2>
+            <ul class="links_list">
+                <li><a href="https://docs.google.com/spreadsheets/d/1WY3QcnwuSTEIWPlIO7BS7Ra-5TW9t41Q9RT-TpBnPXE/edit#gid=0" target="_blank">2024 Reseller Price Sheet</a></li>
+                <li><a href="https://docs.google.com/spreadsheets/d/151QpQVOpf30Xo88azVfGOWrd4DMJ09La4hzxLrQTFiQ/edit#gid=0" target="_blank">2024 Direct Price Sheet</a></li>
+            </ul>
+        </section>
+    {{else if eq .SectionTitle "Proposal Templates"}}
+        <section class="proposal-templates">
+            <h2>Proposal Templates</h2>
+            <ul class="links_list">
+                <li> <a href="https://docs.google.com/document/d/12C85zZHMvtnUW87Fc51CWRTsjMO4zu9M/edit" target="_blank"> Wholesale Addendum </a></li>
+                <li> <a href="https://docs.google.com/document/d/13HUvE8DTwW5CNstGJiiF1U-vUGKyYzme/edit" target="_blank"> Mutual NDA</a></li>
+                <li> <a href="https://docs.google.com/document/d/1LrziPuOk3jilvS8Z7-77oF_Njdu6miNN/edit" target="_blank"> Master Training Agreement </a></li>
+            </ul>
+        </section>
     {{else}}
         <h2>The Future Home of {{.SectionTitle}} Information</h2>
     {{end}}
