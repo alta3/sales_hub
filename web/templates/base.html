@@ -1,0 +1,193 @@
+<!-- web/templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6v5J6E5l9X3UwvESIqsdS1NSqdrEJzJF3C6/TYzZUJ5o9kC8e9UZ0N2W07h1cuI" crossorigin="anonymous">
+    <title>{{ .Title }} - Alta3 Research</title>
+    <style>
+        /* web/static/css/style.css */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Example background color */
+        }
+
+        header, footer {
+            background-color: #003366; /* Example nav/footer background color */
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+
+        nav a {
+            color: white;
+            margin: 10px 15px;
+            text-decoration: none;
+        }
+
+        .home, .courses, .events, .about, .blog, .contact {
+            padding: 20px;
+            text-align: center;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar img {
+            height: 50px;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #003366;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            display: block;
+            color: white; 
+            padding: 10px 10px; 
+            text-decoration: none;
+        }
+        .dropdown-content a:hover {
+            background-color: #002244; /* Darker shade for hover effect, adjust as needed */
+        }
+        .navbar i.fa-shopping-cart {
+            margin-right: 5px; /* Adds some space between the icon and the text */
+            color: white; /* Adjust color as needed */
+        }
+        
+        /* Optional: Change the icon's color on hover */
+        .navbar a:hover i.fa-shopping-cart {
+            color: #CCCCCC; /* Lighter shade when hovered */
+        }
+
+        footer {
+            background-color: #002244; /* Dark footer background color */
+            color: white;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-about,
+        .footer-links,
+        .footer-social {
+            margin: 0 20px;
+        }
+        
+        .footer-links ul,
+        .footer-social ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li,
+        .footer-social li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-social a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-links a {
+            color: white;
+ 
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        
+            .footer-about,
+            .footer-links,
+            .footer-social {
+                margin: 10px 0;
+            }
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <header>
+        <nav style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="/">
+                <img src="https://static.alta3.com/images/Alta3-logo_large.png" alt="Alta3 Research" style="height: 50px;"> <!-- Adjust size as needed -->
+            </a>
+            <div style="margin-right: 50px;">
+                <a href="/courses" style="margin-right: 20px;">Courses</a>
+                <a href="/events" style="margin-right: 20px;">Events</a>
+                <div class="dropdown" style="display: inline-block;">
+                    <a href="#" class="dropbtn">Company</a>
+                    <div class="dropdown-content">
+                        <a href="/about">About Us</a>
+                        <a href="/blog">Blog</a>
+                        <a href="/contact">Contact</a>
+                    </div>
+                </div>
+                🛒
+                    
+            </div>
+        </nav>
+    </header>
+
+    {{ template "content" . }}
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <a href="/">
+                    <img src="https://static.alta3.com/images/Alta3-logo_large.png" alt="Alta3 Research" style="height: 50px;"> <!-- Adjust size as needed -->
+                </a>
+                <p>Providing premier training in cloud, automation, security, and more.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/courses">Courses</a></li>
+                    <li><a href="/events">Events</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <!-- Add other quick links here -->
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Connect with Us</h3>
+                <a href="https://www.linkedin.com/company/alta3-research-inc/" target="_blank"><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/480px-LinkedIn_logo_initials.png' style="height: 50px;"/></a>
+                <!-- Add other social media links here -->
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple script to handle dropdown visibility
+        document.querySelector('.dropbtn').addEventListener('mouseover', function() {
+            document.querySelector('.dropdown-content').style.display = 'block';
+        });
+        document.querySelector('.dropdown').addEventListener('mouseleave', function() {
+            document.querySelector('.dropdown-content').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

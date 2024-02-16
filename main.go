@@ -11,9 +11,10 @@ import (
 func RegisterRoutes(router *mux.Router) {
 	router.HandleFunc("/", app.HomeHandler).Methods("GET")
 	router.HandleFunc("/courses", app.CoursesHandler).Methods("GET")
-	router.HandleFunc("/sales-enablement", app.SalesEnablementHandler).Methods("GET")
-	router.HandleFunc("/proposal-templates", app.ProposalTemplatesHandler).Methods("GET")
-	router.HandleFunc("/pricing", app.PricingHandler).Methods("GET")
+	router.HandleFunc("/events", app.EventsHandler).Methods("GET")
+	router.HandleFunc("/about", app.AboutUsHandler).Methods("GET")
+	router.HandleFunc("/blog", app.BlogHandler).Methods("GET")
+	router.HandleFunc("/contact", app.ContactUsHandler).Methods("GET")
 }
 
 func main() {
